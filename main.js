@@ -70,7 +70,11 @@ posts.forEach(post => {
     let authorName = postAuthor.name;
     let authorPic = postAuthor.image;
     var postLikes = post.likes;
-    var postDate = post.created;
+    let americanDate = post.created;
+    let genYear = americanDate.slice(0,4);
+    let genMonth = americanDate.slice(5,7);
+    let genDay = americanDate.slice(8,10);
+    var postDate = (genDay) + " - " + (genMonth) + " - " + (genYear);
 
     newDiv.outerHTML = `        <div class="post">
     <div class="post__header">
