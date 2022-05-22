@@ -38,7 +38,7 @@ const posts = [
         "media": "https://unsplash.it/600/400?image=24",
         "author": {
             "name": "Luca Formicola",
-            "image": null
+            "image": "https://unsplash.it/300/300?image=16"
         },
         "likes": 56,
         "created": "2021-04-03"
@@ -55,3 +55,53 @@ const posts = [
         "created": "2021-03-05"
     }
 ];
+
+const myNode = document.getElementById("container");
+
+posts.forEach(post => {
+
+    let newDiv = document.createElement("div");
+    myNode.append(newDiv);
+    
+    var postId = post.id;
+    var postCont = post.content;
+    var postPic = post.media;
+    var postAuthor = post.author;
+    let authorName = postAuthor.name;
+    let authorPic = postAuthor.image;
+    var postLikes = post.likes;
+    var postDate = post.created;
+
+    newDiv.outerHTML = `        <div class="post">
+    <div class="post__header">
+        <div class="post-meta">                    
+            <div class="post-meta__icon">
+                <img class="profile-pic" src="${authorPic}" alt="${authorName}">                    
+            </div>
+            <div class="post-meta__data">
+                <div class="post-meta__author">${authorName}</div>
+                <div class="post-meta__time">${postDate}</div>
+            </div>                    
+        </div>
+    </div>
+    <div class="post__text">${postCont}</div>
+    <div class="post__image">
+        <img src="${postPic}" alt="">
+    </div>
+    <div class="post__footer">
+        <div class="likes js-likes">
+            <div class="likes__cta">
+                <a class="like-button js-like-button" href="#" data-postid="${postId}">
+                    <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+                    <span class="like-button__label">Mi Piace</span>
+                </a>
+            </div>
+            <div class="likes__counter">
+                Piace a <b id="like-counter-1" class="js-likes-counter">${postLikes}</b> persone
+            </div>
+        </div> 
+    </div>            
+    </div>`;
+})
+
+
